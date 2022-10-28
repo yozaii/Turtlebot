@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+
+
+<!-- VISUALIZATION LAUNCH FILE FOR REAL ROBOT -->
+
+<arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model)_for_autorace_2020.urdf.xacro" />
+
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find projet2022)/rviz/config_real.rviz"/>
+
+</launch>
